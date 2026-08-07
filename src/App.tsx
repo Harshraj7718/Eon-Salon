@@ -11,6 +11,7 @@ const LOGO = '/media/photos/logo.jpg'; // Eon Salon brand mark, used in the navb
 
 // ACT I cinematic layers — transparent-edge PNGs, back to front
 const HERO_IMG = '/media/photos/hero.png'; // full-bleed stage backdrop
+const HERO_IMG_MOBILE = '/media/photos/hero-mobile.png'; // mobile-cropped stage backdrop
 const L_GLOW = ''; // mirror-bulb glow, screen blend
 const L_MIRRORS = ''; // row of station mirrors, mid-back
 const L_PORTRAIT_L = ''; // model portrait, left half of the split
@@ -694,6 +695,9 @@ function useHeroParallax(
     const backdrop = backdropRef.current;
     if (!section || !backdrop) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Skip on narrow viewports: the oversized backdrop this drives crops the
+    // photo far too tight on portrait phone screens (see .backdrop mobile override).
+    if (window.matchMedia('(max-width: 640px)').matches) return;
 
     const ctx = gsap.context(() => {
       gsap.to(backdrop, {
@@ -728,15 +732,18 @@ function CinemaAct() {
     >
       <div className="stage">
         <div className="world">
-          <img
-            ref={backdropRef}
-            className="layer backdrop"
-            src={HERO_IMG}
-            alt=""
-            loading="eager"
-            decoding="async"
-            onError={handleImgError}
-          />
+          <picture>
+            <source media="(max-width: 640px)" srcSet={HERO_IMG_MOBILE} />
+            <img
+              ref={backdropRef}
+              className="layer backdrop"
+              src={HERO_IMG}
+              alt=""
+              loading="eager"
+              decoding="async"
+              onError={handleImgError}
+            />
+          </picture>
           <div className="back-stack">
             <AssetImage className="layer back-img glow" src={L_GLOW} alt="" loading="eager" />
             <HairSalonElements />
@@ -1215,7 +1222,7 @@ function PriceSection() {
     <section
       id="prices"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[5] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 relative lg:sticky lg:top-0 z-[5] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={LEADING_VIDEO} />
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -1703,7 +1710,7 @@ function GoogleReviewSection() {
     <section
       id="reviews"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[11] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 relative lg:sticky lg:top-0 z-[11] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={STUDIO_VIDEO} />
       <div className="relative z-10 max-w-6xl mx-auto">

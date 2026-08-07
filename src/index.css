@@ -477,6 +477,11 @@
   .stage {
     min-height: 640px;
   }
+  .backdrop {
+    top: 0;
+    bottom: 0;
+    height: 100%;
+  }
   .hero-title {
     font-size: 6rem;
   }
