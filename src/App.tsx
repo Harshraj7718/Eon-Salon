@@ -956,7 +956,7 @@ function OurValuesSection() {
     <section
       id="values"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[1] min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[1] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
         <div>
@@ -1003,7 +1003,7 @@ function LookbookSection() {
     <section
       id="lookbook"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[2] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[2] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-[#000000]"
     >
       <div
         style={reveal.getImageAnimStyle(0)}
@@ -1131,7 +1131,7 @@ function InstagramReelSection() {
     <section
       id="reels"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[4] min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[4] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1139,7 +1139,7 @@ function InstagramReelSection() {
             From Instagram
           </span>
           <h2 className="mt-4 font-[Bodoni_Moda] text-4xl md:text-6xl leading-[0.95] text-[#DDE3E2]">
-            Reels from the chair.
+            Reels from the chair. @eon_salon
           </h2>
         </div>
         <div className="mt-10 md:mt-14 flex md:grid md:grid-cols-4 gap-3 md:gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-2">
@@ -1215,7 +1215,7 @@ function PriceSection() {
     <section
       id="prices"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[5] min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[5] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={LEADING_VIDEO} />
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -1270,7 +1270,7 @@ function LeadingTheWaySection() {
     <section
       id="leading"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[6] min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[6] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1344,7 +1344,7 @@ function SalonBestThingsSection() {
     <section
       id="best-things"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[7] min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[7] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1423,7 +1423,7 @@ function StudioSection() {
     <section
       id="studio"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[8] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-white"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[8] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-white"
     >
       <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-2">
         <div className="flex flex-col gap-1.5 md:gap-2">
@@ -1542,7 +1542,7 @@ function StoreLocationSection() {
     <section
       id="location"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[9] min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[9] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1651,7 +1651,7 @@ function BrandsMarqueeSection() {
     <section
       id="brands"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[10] min-h-screen overflow-hidden py-14 md:py-20 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[10] lg:min-h-screen overflow-hidden py-14 md:py-20 bg-[#000000]"
     >
       <div style={reveal.getAnimStyle(0)}>
         <p className="text-center font-[Space_Mono] text-[11px] uppercase tracking-[0.14em] text-[#C9C9C9] mb-8 md:mb-10">
@@ -1703,7 +1703,7 @@ function GoogleReviewSection() {
     <section
       id="reviews"
       ref={reveal.containerRef}
-      className="scroll-mt-20 sticky top-0 z-[11] min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 lg:sticky lg:top-0 z-[11] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={STUDIO_VIDEO} />
       <div className="relative z-10 max-w-6xl mx-auto">
