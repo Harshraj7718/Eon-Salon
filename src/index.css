@@ -146,6 +146,30 @@
   z-index: 0;
 }
 
+.hero-reveal {
+  /* opacity only: any non-"none" filter here would make this wrapper a new
+     containing block for .backdrop's absolute+percentage sizing, collapsing
+     it to 0 height (see .backdrop's top/bottom/height above). */
+  animation: hero-reveal-in 1.2s ease-out forwards;
+}
+
+@keyframes hero-reveal-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
 .back-stack {
   top: 0;
   bottom: 0;
@@ -429,10 +453,14 @@
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
   pointer-events: auto;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .note-button:hover {
   background: var(--bulb);
+  transform: scale(1.04);
 }
 
 .note-button span:first-child {

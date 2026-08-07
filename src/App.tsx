@@ -286,7 +286,7 @@ function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 py-2 md:py-3 bg-transparent">
-        <a href="#top" aria-label="Eon Salon home">
+        <a href="#top" aria-label="Eon Salon home" className="transition-transform duration-200 hover:scale-105">
           <img
             src={LOGO}
             alt="Eon Salon"
@@ -296,7 +296,7 @@ function Navbar() {
 
         <button
           type="button"
-          className="w-10 h-10 flex items-center justify-center relative"
+          className="w-10 h-10 flex items-center justify-center relative opacity-90 hover:opacity-100 transition-opacity duration-200"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((v) => !v)}
@@ -732,18 +732,20 @@ function CinemaAct() {
     >
       <div className="stage">
         <div className="world">
-          <picture>
-            <source media="(max-width: 640px)" srcSet={HERO_IMG_MOBILE} />
-            <img
-              ref={backdropRef}
-              className="layer backdrop"
-              src={HERO_IMG}
-              alt=""
-              loading="eager"
-              decoding="async"
-              onError={handleImgError}
-            />
-          </picture>
+          <div className="hero-reveal">
+            <picture>
+              <source media="(max-width: 640px)" srcSet={HERO_IMG_MOBILE} />
+              <img
+                ref={backdropRef}
+                className="layer backdrop"
+                src={HERO_IMG}
+                alt=""
+                loading="eager"
+                decoding="async"
+                onError={handleImgError}
+              />
+            </picture>
+          </div>
           <div className="back-stack">
             <AssetImage className="layer back-img glow" src={L_GLOW} alt="" loading="eager" />
             <HairSalonElements />
@@ -963,7 +965,7 @@ function OurValuesSection() {
     <section
       id="values"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[1] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
         <div>
@@ -977,7 +979,11 @@ function OurValuesSection() {
           </div>
           <ul className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 md:gap-y-8 max-w-4xl">
             {OUR_VALUES.map((value, i) => (
-              <li key={value} style={reveal.getAnimStyle(i)} className="flex items-start gap-4">
+              <li
+                key={value}
+                style={reveal.getAnimStyle(i)}
+                className="flex items-start gap-4 transition-transform duration-200 hover:translate-x-1.5"
+              >
                 <CheckIcon />
                 <span className="font-[Bodoni_Moda] text-xl md:text-2xl text-[#DDE3E2]">
                   {value}
@@ -990,7 +996,7 @@ function OurValuesSection() {
           style={reveal.getImageAnimStyle(5)}
           className="flex justify-center lg:justify-end shrink-0"
         >
-          <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/15 bg-[#0a0a0a]">
+          <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/15 bg-[#0a0a0a] transition-transform duration-300 hover:scale-105">
             <AssetImage src={LOGO} alt="Eon Salon" className="w-full h-full object-cover" />
           </div>
         </div>
@@ -1010,13 +1016,15 @@ function LookbookSection() {
     <section
       id="lookbook"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[2] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-[#000000]"
+      className="scroll-mt-20 min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-[#000000]"
     >
       <div
         style={reveal.getImageAnimStyle(0)}
-        className="relative w-full flex-1 min-h-0 rounded-xl md:rounded-2xl overflow-hidden"
+        className="group relative w-full flex-1 min-h-0 rounded-xl md:rounded-2xl overflow-hidden"
       >
-        <SectionVideoBackground src={LOOKBOOK_VIDEO} />
+        <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105">
+          <SectionVideoBackground src={LOOKBOOK_VIDEO} />
+        </div>
         <p className="absolute top-4 left-4 md:top-7 md:left-7 text-[#DDE3E2] text-xs md:text-sm font-semibold leading-4 md:leading-5 max-w-[200px] md:max-w-[300px] z-10 drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
           Ten chairs, one standard.
           <br />
@@ -1082,7 +1090,7 @@ function OurWorksSection() {
   );
 
   return (
-    <section id="works" className="scroll-mt-20 relative z-[3] bg-white">
+    <section id="works" className="scroll-mt-20 bg-white">
       <div
         ref={reveal.containerRef}
         style={reveal.getAnimStyle(0)}
@@ -1138,7 +1146,7 @@ function InstagramReelSection() {
     <section
       id="reels"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[4] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1154,9 +1162,11 @@ function InstagramReelSection() {
             <div
               key={i}
               style={reveal.getImageAnimStyle(i)}
-              className="relative shrink-0 w-[62vw] md:w-auto snap-start rounded-xl md:rounded-2xl overflow-hidden bg-[#000000] aspect-[9/16]"
+              className="group relative shrink-0 w-[62vw] md:w-auto snap-start rounded-xl md:rounded-2xl overflow-hidden bg-[#000000] aspect-[9/16]"
             >
-              <ReelVideo src={reel.src} poster={reel.poster} />
+              <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
+                <ReelVideo src={reel.src} poster={reel.poster} />
+              </div>
               <LocationBadge path={reel.src} />
             </div>
           ))}
@@ -1222,7 +1232,7 @@ function PriceSection() {
     <section
       id="prices"
       ref={reveal.containerRef}
-      className="scroll-mt-20 relative lg:sticky lg:top-0 z-[5] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 relative overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={LEADING_VIDEO} />
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -1277,7 +1287,7 @@ function LeadingTheWaySection() {
     <section
       id="leading"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[6] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
+      className="scroll-mt-20 px-4 md:px-10 py-20 md:py-28 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1351,7 +1361,7 @@ function SalonBestThingsSection() {
     <section
       id="best-things"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[7] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1368,7 +1378,7 @@ function SalonBestThingsSection() {
               <li
                 key={item.title}
                 style={reveal.getAnimStyle(i)}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 transition-transform duration-200 hover:translate-x-1.5"
               >
                 <ScissorIcon />
                 <div>
@@ -1389,7 +1399,7 @@ function SalonBestThingsSection() {
             <AssetImage
               src={BEST_THINGS_IMG}
               alt="Inside Eon Salon"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
             />
             <LocationBadge path={BEST_THINGS_IMG} />
           </div>
@@ -1430,7 +1440,7 @@ function StudioSection() {
     <section
       id="studio"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[8] min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-white"
+      className="scroll-mt-20 min-h-screen md:h-screen w-full overflow-hidden flex flex-col pt-1.5 md:pt-2 px-3 md:px-5 pb-1.5 md:pb-2 gap-1.5 md:gap-2 bg-white"
     >
       <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-1.5 md:gap-2">
         <div className="flex flex-col gap-1.5 md:gap-2">
@@ -1456,7 +1466,7 @@ function StudioSection() {
               <AssetImage
                 src={STUDIO_IMG_1}
                 alt="Stylist cutting at the mirror station"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
               <LocationBadge path={STUDIO_IMG_1} />
             </div>
@@ -1464,7 +1474,7 @@ function StudioSection() {
               <AssetImage
                 src={STUDIO_IMG_2}
                 alt="Colour being mixed at the bar"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
               <LocationBadge path={STUDIO_IMG_2} />
             </div>
@@ -1500,14 +1510,14 @@ function StudioSection() {
           <AssetImage
             src={STUDIO_TALL}
             alt="Client after a cut, mirror behind"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
           />
           <LocationBadge path={STUDIO_TALL} />
           <div className="absolute bottom-3 left-3 right-3 md:bottom-5 md:left-5 md:right-5 flex gap-1.5 md:gap-2">
             <button
               type="button"
               aria-label="How a first appointment runs"
-              className="flex-1 bg-[#DDE3E2] rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 text-left"
+              className="flex-1 bg-[#DDE3E2] rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 text-left hover:bg-white transition-colors duration-200"
             >
               <h4 className="text-lg md:text-2xl font-[Bodoni_Moda] text-[#000000] leading-5 md:leading-7">
                 How a first
@@ -1521,7 +1531,7 @@ function StudioSection() {
             <button
               type="button"
               aria-label="Looking after colour at home"
-              className="flex-1 bg-white/10 backdrop-blur-xl border border-white/10 rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 text-left"
+              className="flex-1 bg-white/10 backdrop-blur-xl border border-white/10 rounded-xl md:rounded-2xl p-3 md:p-5 flex flex-col justify-between h-36 md:h-52 text-left hover:bg-white/20 hover:border-white/20 transition-colors duration-200"
             >
               <h4 className="text-lg md:text-2xl font-[Bodoni_Moda] text-[#DDE3E2] leading-5 md:leading-7">
                 Looking after
@@ -1549,7 +1559,7 @@ function StoreLocationSection() {
     <section
       id="location"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[9] lg:min-h-screen px-4 md:px-10 py-20 md:py-28 bg-white"
+      className="scroll-mt-20 px-4 md:px-10 py-20 md:py-28 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         <div style={reveal.getAnimStyle(0)}>
@@ -1658,7 +1668,7 @@ function BrandsMarqueeSection() {
     <section
       id="brands"
       ref={reveal.containerRef}
-      className="scroll-mt-20 lg:sticky lg:top-0 z-[10] lg:min-h-screen overflow-hidden py-14 md:py-20 bg-[#000000]"
+      className="scroll-mt-20 py-14 md:py-20 bg-[#000000] overflow-hidden"
     >
       <div style={reveal.getAnimStyle(0)}>
         <p className="text-center font-[Space_Mono] text-[11px] uppercase tracking-[0.14em] text-[#C9C9C9] mb-8 md:mb-10">
@@ -1710,7 +1720,7 @@ function GoogleReviewSection() {
     <section
       id="reviews"
       ref={reveal.containerRef}
-      className="scroll-mt-20 relative lg:sticky lg:top-0 z-[11] lg:min-h-screen overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
+      className="scroll-mt-20 relative overflow-hidden px-4 md:px-10 py-20 md:py-28 bg-[#000000]"
     >
       <SectionVideoBackground src={STUDIO_VIDEO} />
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -1727,7 +1737,7 @@ function GoogleReviewSection() {
             <div
               key={review.name}
               style={reveal.getAnimStyle(i)}
-              className="rounded-xl md:rounded-2xl bg-[#000000] p-6 md:p-7 border border-white/10"
+              className="rounded-xl md:rounded-2xl bg-[#000000] p-6 md:p-7 border border-white/10 transition-colors duration-200 hover:border-white/30"
             >
               <p className="font-[Space_Mono] text-sm text-[#DDE3E2] tracking-[0.1em]" aria-hidden="true">
                 {'★'.repeat(review.rating)}
@@ -1750,7 +1760,7 @@ function SiteFooter() {
   return (
     <footer
       id="contact"
-      className="scroll-mt-20 relative z-[12] px-3 md:px-5 pb-6 pt-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-[#6E7574] bg-[#000000]"
+      className="scroll-mt-20 px-3 md:px-5 pb-6 pt-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-[#6E7574] bg-[#000000]"
     >
       <p className="font-[Bodoni_Moda] text-4xl md:text-6xl text-[#DDE3E2]">Eon Salon</p>
       <div className="font-[Space_Mono] text-[11px] uppercase tracking-[0.14em] leading-relaxed">
