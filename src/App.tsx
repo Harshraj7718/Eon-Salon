@@ -10,8 +10,8 @@ import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 're
 const LOGO = '/media/photos/logo.jpg'; // Eon Salon brand mark, used in the navbar
 
 // ACT I cinematic layers — transparent-edge PNGs, back to front
-const HERO_IMG = '/media/photos/hero.png'; // full-bleed stage backdrop
-const HERO_IMG_MOBILE = '/media/photos/hero-mobile.png'; // mobile-cropped stage backdrop
+const HERO_IMG = '/media/photos/hero.jpg'; // full-bleed stage backdrop
+const HERO_IMG_MOBILE = '/media/photos/hero-mobile.jpg'; // mobile-cropped stage backdrop
 const L_GLOW = ''; // mirror-bulb glow, screen blend
 const L_MIRRORS = ''; // row of station mirrors, mid-back
 const L_PORTRAIT_L = ''; // model portrait, left half of the split
@@ -191,20 +191,20 @@ function SplashScreen({ onComplete }: { onComplete: () => void }) {
       exitTimeout = setTimeout(() => {
         setExiting(true);
         onComplete();
-      }, 400);
+      }, 200);
     } else {
       let step = 0;
       interval = setInterval(() => {
-        step += 1;
-        setCount(step);
+        step += 4;
+        setCount(Math.min(step, 100));
         if (step >= 100) {
           if (interval) clearInterval(interval);
           exitTimeout = setTimeout(() => {
             setExiting(true);
-            completeTimeout = setTimeout(onComplete, 900);
-          }, 200);
+            completeTimeout = setTimeout(onComplete, 400);
+          }, 100);
         }
-      }, 20);
+      }, 8);
     }
 
     return () => {
@@ -1637,7 +1637,7 @@ function StoreLocationSection() {
             title="Eon Salon location"
             src={MAP_EMBED_SRC}
             className="w-full h-full border-0 grayscale contrast-125"
-            loading="eager"
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
