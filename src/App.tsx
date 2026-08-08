@@ -1020,11 +1020,9 @@ function LookbookSection() {
     >
       <div
         style={reveal.getImageAnimStyle(0)}
-        className="group relative w-full flex-1 min-h-0 rounded-xl md:rounded-2xl overflow-hidden"
+        className="relative w-full flex-1 min-h-0 rounded-xl md:rounded-2xl overflow-hidden"
       >
-        <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105">
-          <SectionVideoBackground src={LOOKBOOK_VIDEO} />
-        </div>
+        <SectionVideoBackground src={LOOKBOOK_VIDEO} />
         <p className="absolute top-4 left-4 md:top-7 md:left-7 text-[#DDE3E2] text-xs md:text-sm font-semibold leading-4 md:leading-5 max-w-[200px] md:max-w-[300px] z-10 drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
           Ten chairs, one standard.
           <br />
@@ -1162,11 +1160,9 @@ function InstagramReelSection() {
             <div
               key={i}
               style={reveal.getImageAnimStyle(i)}
-              className="group relative shrink-0 w-[62vw] md:w-auto snap-start rounded-xl md:rounded-2xl overflow-hidden bg-[#000000] aspect-[9/16]"
+              className="relative shrink-0 w-[62vw] md:w-auto snap-start rounded-xl md:rounded-2xl overflow-hidden bg-[#000000] aspect-[9/16]"
             >
-              <div className="w-full h-full transition-transform duration-500 ease-out group-hover:scale-105">
-                <ReelVideo src={reel.src} poster={reel.poster} />
-              </div>
+              <ReelVideo src={reel.src} poster={reel.poster} />
               <LocationBadge path={reel.src} />
             </div>
           ))}
