@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { AssetImage, LocationBadge, handleImgError } from './lib/media-asset';
+import { AssetImage, LocationBadge } from './lib/media-asset';
 import ParallaxUnfurlingGallery from './components/ui/3d-parallax-unfurling-gallery';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,8 +10,8 @@ import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 're
 const LOGO = '/media/photos/logo.jpg'; // Eon Salon brand mark, used in the navbar
 
 // ACT I cinematic layers — transparent-edge PNGs, back to front
-const HERO_IMG = '/media/photos/hero.jpg'; // full-bleed stage backdrop
-const HERO_IMG_MOBILE = '/media/photos/hero-mobile.jpg'; // mobile-cropped stage backdrop
+const HERO_IMG = '/media/photos/hero.jpg'; // poster frame + no-JS/error fallback
+const HERO_VIDEO = '/media/videos/hero-theme.mp4'; // full-bleed stage backdrop
 const L_GLOW = ''; // mirror-bulb glow, screen blend
 const L_MIRRORS = ''; // row of station mirrors, mid-back
 const L_PORTRAIT_L = ''; // model portrait, left half of the split
@@ -688,7 +688,7 @@ function HairSalonElements() {
 
 function useHeroParallax(
   sectionRef: RefObject<HTMLElement | null>,
-  backdropRef: RefObject<HTMLImageElement | null>,
+  backdropRef: RefObject<HTMLVideoElement | null>,
 ) {
   useEffect(() => {
     const section = sectionRef.current;
@@ -718,10 +718,11 @@ function useHeroParallax(
 
 function CinemaAct() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const backdropRef = useRef<HTMLImageElement | null>(null);
+  const backdropRef = useRef<HTMLVideoElement | null>(null);
 
   useCinemaScroll(sectionRef);
   useHeroParallax(sectionRef, backdropRef);
+  useAutoplayInView(backdropRef);
 
   return (
     <section
@@ -733,18 +734,20 @@ function CinemaAct() {
       <div className="stage">
         <div className="world">
           <div className="hero-reveal">
-            <picture>
-              <source media="(max-width: 640px)" srcSet={HERO_IMG_MOBILE} />
-              <img
-                ref={backdropRef}
-                className="layer backdrop"
-                src={HERO_IMG}
-                alt=""
-                loading="eager"
-                decoding="async"
-                onError={handleImgError}
-              />
-            </picture>
+            <video
+              ref={backdropRef}
+              className="layer backdrop"
+              src={HERO_VIDEO}
+              poster={HERO_IMG}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
           </div>
           <div className="back-stack">
             <AssetImage className="layer back-img glow" src={L_GLOW} alt="" loading="eager" />
